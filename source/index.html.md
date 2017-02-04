@@ -3,9 +3,6 @@ title: API Reference
 
 language_tabs:
   - shell
-  - ruby
-  - python
-  - javascript
 
 toc_footers:
   - <a href='#'>Sign Up for a Developer Key</a>
@@ -19,171 +16,183 @@ search: true
 
 # Introduction
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
-
-We have language bindings in Shell, Ruby, and Python! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
-
-This example API documentation page was created with [Slate](https://github.com/tripit/slate). Feel free to edit it and use it as a base for your own API's documentation.
+欢迎来到job api 文档中心, 关于这次高端兼职项目的api我将在这里发布,大家加油! 一起努力!!
 
 # Authentication
 
+说明:认证过程, 大部分api请求是要认证的,当使用电话和密码请求后将获得一个cookie,此cookie便是其它请求的凭证.
+
 > To authorize, use this code:
 
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-```
-
-```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
-  }
-]
-```
-
-This endpoint retrieves all kittens.
-
 ### HTTP Request
 
-`GET http://example.com/api/kittens`
-
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
-```
-
-```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
-
-This endpoint retrieves a specific kitten.
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
+`GET http://127.0.0.1/api/auth?tel=<TEL>&password=<PASS>&role=<ROLE>`
 
 Parameter | Description
 --------- | -----------
-ID | The ID of the kitten to retrieve
+TEL | 注册时的电话
+PASS | 密码
+ROLE | jobseeker OR company
 
+
+```shell
+# 返回一个cookie,下次请求请务必带上此cookie
+curl "http://127.0.0.1/api/auth?tel=xxxx&password=xxxx&role=xxx"
+```
+
+api authorize 目前采用GET请求, 此请求成功后状态码为200, 并返回个人数据和一个cookie作为下次请求的凭证,
+
+<aside class="notice">
+请记下cookie
+</aside>
+
+
+# Jobseekers
+
+说明:找工作的角色
+
+## 添加一个jobseeker
+
+
+
+>添加jobseeker请求的body如下
+
+```json
+{
+    "name":"name",
+    "sex":0,
+    "tel":"1234567890",
+    "password":"password",
+    "resume":"简历",
+    "parttime":false
+}
+```
+
+### HTTP Request
+
+`POST http://127.0.0.1/api/addjobseeker`
+
+请将请求的json数据放到body里,
+
+Parameter | Description
+--------- | -----------
+name|姓名
+sex|姓别 0 OR 1
+tel|电话
+password|登陆验证的密码
+resume|简历
+parttime|是否兼职
+
+## 通过ID获得一个Jobseeker
+
+### HTTP Request
+
+`GET http://domain/api/getjobseeker?id=<ID>`
+
+Parameter | Description
+--------- | -----------
+ID|Jobseekers的ID
+
+# Company
+
+说明:作为公司提供工作岗位的角色
+
+## 添加一个Company
+
+>添加company请求的body如下
+
+```json
+{
+    "name":"name",
+    "tel":"1234567890",
+    "password":"password",
+    "city":"Tianjin",
+    "address":"bin han xin qu",
+    "type":"IT"
+}
+```
+
+### HTTP Request
+
+`POST http://127.0.0.1/api/addcompany`
+
+请将请求的json数据放到body里.
+
+Parameter | Description
+--------- | -----------
+name|公司名称
+tel|电话
+password|登陆验证的密码
+city|所在城市,
+address|公司地址,
+type|公司类型
+
+## 通过ID获得一个Company
+
+### HTTP Request
+
+`GET http://domain/api/getcompany?id=<ID>`
+
+Parameter | Description
+--------- | -----------
+ID|Company的ID
+
+# Job
+
+说明:工作岗位
+
+## 添加一个Job
+
+>添加job请求的body如下
+
+```json
+{
+    "name":"changvvb",
+    "salaryex":0,
+    "parttime":false,
+    "jobtype":"tester",
+    "companyid":2
+}
+```
+
+
+### HTTP Request
+`POST http://domain/api/addjob`
+
+请将请求的json数据放到body里.
+
+Parameter | Description
+--------- | -----------
+name|工作职位名称
+salary|工资
+parttime|是否是兼职工作
+jobtype|工作类型
+companyid|所属公司的ID
+
+# Application
+
+说明:发布的工作申请
+
+## 添加一个Application
+
+>添加application请求的body如下
+
+```json
+{
+    "salaryex":10000,
+    "positionex":"programer",
+    "jobseekerid":2
+}
+```
+
+
+### HTTP Request
+`POST http://domain/api/addapplication`
+
+请将请求的json数据放到body里.
+
+Parameter | Description
+--------- | -----------
+salaryex|期望工资
+positionex|期望职务
+jobseekerid|Jobseeker的ID
