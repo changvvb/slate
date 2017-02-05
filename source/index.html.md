@@ -26,7 +26,7 @@ search: true
 
 ### HTTP Request
 
-`GET http://127.0.0.1/api/auth?tel=<TEL>&password=<PASS>&role=<ROLE>`
+`GET http://iot.celitea.cn:2000/api/auth?tel=<TEL>&password=<PASS>&role=<ROLE>`
 
 Parameter | Description
 --------- | -----------
@@ -37,7 +37,7 @@ ROLE | jobseeker OR company
 
 ```shell
 # 返回一个cookie,下次请求请务必带上此cookie
-curl "http://127.0.0.1/api/auth?tel=xxxx&password=xxxx&role=xxx"
+curl "http://iot.celitea.cn:2000/api/auth?tel=xxxx&password=xxxx&role=xxx"
 ```
 
 api authorize 目前采用GET请求, 此请求成功后状态码为200, 并返回个人数据和一个cookie作为下次请求的凭证,
@@ -70,7 +70,7 @@ api authorize 目前采用GET请求, 此请求成功后状态码为200, 并返�
 
 ### HTTP Request
 
-`POST http://127.0.0.1/api/addjobseeker`
+`POST http://iot.celitea.cn:2000/api/addjobseeker`
 
 请将请求的json数据放到body里,
 
@@ -87,7 +87,7 @@ parttime|是否兼职
 
 ### HTTP Request
 
-`GET http://domain/api/getjobseeker?id=<ID>`
+`GET http://iot.celitea.cn:2000/api/getjobseeker?id=<ID>`
 
 Parameter | Description
 --------- | -----------
@@ -114,7 +114,7 @@ ID|Jobseekers的ID
 
 ### HTTP Request
 
-`POST http://127.0.0.1/api/addcompany`
+`POST http://iot.celitea.cn:2000/api/addcompany`
 
 请将请求的json数据放到body里.
 
@@ -131,7 +131,7 @@ type|公司类型
 
 ### HTTP Request
 
-`GET http://domain/api/getcompany?id=<ID>`
+`GET http://iot.celitea.cn:2000/api/getcompany?id=<ID>`
 
 Parameter | Description
 --------- | -----------
@@ -157,7 +157,7 @@ ID|Company的ID
 
 
 ### HTTP Request
-`POST http://domain/api/addjob`
+`POST http://iot.celitea.cn:2000/api/addjob`
 
 请将请求的json数据放到body里.
 
@@ -187,7 +187,7 @@ companyid|所属公司的ID
 
 
 ### HTTP Request
-`POST http://domain/api/addapplication`
+`POST http://iot.celitea.cn:2000/api/addapplication`
 
 请将请求的json数据放到body里.
 
