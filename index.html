@@ -131,7 +131,7 @@
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://127.0.0.1/api/auth?tel=&lt;TEL&gt;&amp;password=&lt;PASS&gt;&amp;role=&lt;ROLE&gt;</code></p>
+<p><code class="prettyprint">GET http://iot.celitea.cn:2000/api/auth?tel=&lt;TEL&gt;&amp;password=&lt;PASS&gt;&amp;role=&lt;ROLE&gt;</code></p>
 
 <table><thead>
 <tr>
@@ -153,7 +153,7 @@
 </tr>
 </tbody></table>
 <pre class="highlight shell"><code><span class="c"># 返回一个cookie,下次请求请务必带上此cookie</span>
-curl <span class="s2">"http://127.0.0.1/api/auth?tel=xxxx&amp;password=xxxx&amp;role=xxx"</span>
+curl <span class="s2">"http://iot.celitea.cn:2000/api/auth?tel=xxxx&amp;password=xxxx&amp;role=xxx"</span>
 </code></pre>
 <p>api authorize 目前采用GET请求, 此请求成功后状态码为200, 并返回个人数据和一个cookie作为下次请求的凭证,</p>
 
@@ -181,7 +181,7 @@ curl <span class="s2">"http://127.0.0.1/api/auth?tel=xxxx&amp;password=xxxx&amp;
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://127.0.0.1/api/addjobseeker</code></p>
+<p><code class="prettyprint">POST http://iot.celitea.cn:2000/api/addjobseeker</code></p>
 
 <p>请将请求的json数据放到body里,</p>
 
@@ -221,7 +221,7 @@ curl <span class="s2">"http://127.0.0.1/api/auth?tel=xxxx&amp;password=xxxx&amp;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://domain/api/getjobseeker?id=&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://iot.celitea.cn:2000/api/getjobseeker?id=&lt;ID&gt;</code></p>
 
 <table><thead>
 <tr>
@@ -255,7 +255,7 @@ curl <span class="s2">"http://127.0.0.1/api/auth?tel=xxxx&amp;password=xxxx&amp;
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://127.0.0.1/api/addcompany</code></p>
+<p><code class="prettyprint">POST http://iot.celitea.cn:2000/api/addcompany</code></p>
 
 <p>请将请求的json数据放到body里.</p>
 
@@ -295,7 +295,7 @@ curl <span class="s2">"http://127.0.0.1/api/auth?tel=xxxx&amp;password=xxxx&amp;
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">GET http://domain/api/getcompany?id=&lt;ID&gt;</code></p>
+<p><code class="prettyprint">GET http://iot.celitea.cn:2000/api/getcompany?id=&lt;ID&gt;</code></p>
 
 <table><thead>
 <tr>
@@ -328,7 +328,7 @@ curl <span class="s2">"http://127.0.0.1/api/auth?tel=xxxx&amp;password=xxxx&amp;
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://domain/api/addjob</code></p>
+<p><code class="prettyprint">POST http://iot.celitea.cn:2000/api/addjob</code></p>
 
 <p>请将请求的json数据放到body里.</p>
 
@@ -377,7 +377,7 @@ curl <span class="s2">"http://127.0.0.1/api/auth?tel=xxxx&amp;password=xxxx&amp;
 </span></code></pre>
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://domain/api/addapplication</code></p>
+<p><code class="prettyprint">POST http://iot.celitea.cn:2000/api/addapplication</code></p>
 
 <p>请将请求的json数据放到body里.</p>
 
