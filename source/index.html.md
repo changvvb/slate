@@ -141,6 +141,18 @@ ID|Company的ID
 
 说明:工作岗位
 
+## 查找Job
+
+### HTTP Request
+`GET http://iot.celitea.cn:9000/api/searchjobs?<parameter>=<value>&...`
+
+Parameter | Description
+----------|------------
+city|工作城市
+salary|期望薪资
+jobtype|工作类型
+keyword|关键词
+
 ## 添加一个Job
 
 >添加job请求的body如下
